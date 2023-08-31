@@ -1,0 +1,919 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Automaticaly generated content, please update scripts/htmlgen.py for any change -->
+   <head>
+      <meta charset="UTF-8">
+      <title align="center">blah blah"</title>
+      <style type="text/css">
+        body, input, select, td, li, div, textarea, p {
+        	font-size: 11px;
+        	line-height: 16px;
+        	font-family: verdana, arial, sans-serif;
+        }
+
+        body {
+        	margin:5px;
+        	background-color:white;
+        }
+
+        h1 {
+        	font-size:16px;
+        	font-weight:bold;
+        }
+
+        h2 {
+        	font-size:14px;
+        	font-weight:bold;
+        }
+      </style>
+   </head>
+   <body>
+      <article>
+         <header>
+            <h1>Ultra-Lightweight Neural Differential DSP Vocoder for High Quality Speech Synthesis</h1>
+         </header>
+      </article>
+
+
+      <div>
+        <h2>Abstract</h2>
+        <p>During recent advances in speech synthesis, several vocoders have been proposed using purely neural networks to produce raw waveforms. Although, such methods produce audio with high quality, but even the most efficient works like MB-MelGAN fail to achieve the performance constraints on low end embedded devices such as a smart-glass or a watch. A pure digital signal processing based vocoder can be implemented via using fast fourier transforms and therefore is a magnitude faster than any neural vocoder, but often gets a lower quality. Combining the best of both worlds, we propose an ultra-lightweight differential DSP system, that uses a jointly optimized acoustic model with DSP vocoder, and achieves audio quality comparable to neural vocoders, while being efficient as a DSP vocoder. Our C++ implementation, without any hardware specific optimization, is at 15 MFLOPS, and achieves a vocoder only RTF of 0.003 and overall RTF 0.044 on CPU, surpassing MB-MelGAN by 350 times.</p>
+      </div>
+
+      <h2> Supplementary audio samples </h2>
+
+
+    <div>
+    <h2> Female Speaker </h2>
+      <table border = "1" class="inlineTable">
+    
+
+        <col width="300">
+        <col width="300">
+        <col width="300">
+        <col width="300">
+        <col width="300">
+        <col width="300">
+        <col width="300">
+     <tr> 
+
+        <th>GroundTruth</th>
+        <th>WaveRNN</th>
+        <th>HifiGAN</th>
+        <th>MB-MelGAN</th>
+        <th>DSP Vocoder</th>
+        <th>DSP Vocoder Adv</th>
+        <th>DDSP Vocoder</th>
+</tr>
+<tr>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/gt/nicole_base_a_00013.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/wavernn/nicole_base_a_00013.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/hifigan/nicole_base_a_00013.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/mbmelgan/nicole_base_a_00013.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/dsp/nicole_base_a_00013.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/dspgan/nicole_base_a_00013.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/ddspgan/nicole_base_a_00013.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+</tr>
+<tr>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/gt/nicole_base_a_00041.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/wavernn/nicole_base_a_00041.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/hifigan/nicole_base_a_00041.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/mbmelgan/nicole_base_a_00041.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/dsp/nicole_base_a_00041.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/dspgan/nicole_base_a_00041.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/ddspgan/nicole_base_a_00041.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+</tr>
+<tr>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/gt/nicole_base_a_00125.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/wavernn/nicole_base_a_00125.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/hifigan/nicole_base_a_00125.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/mbmelgan/nicole_base_a_00125.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/dsp/nicole_base_a_00125.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/dspgan/nicole_base_a_00125.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/ddspgan/nicole_base_a_00125.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+</tr>
+<tr>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/gt/nicole_base_a_00170.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/wavernn/nicole_base_a_00170.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/hifigan/nicole_base_a_00170.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/mbmelgan/nicole_base_a_00170.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/dsp/nicole_base_a_00170.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/dspgan/nicole_base_a_00170.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/ddspgan/nicole_base_a_00170.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+</tr>
+<tr>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/gt/nicole_base_a_00316.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/wavernn/nicole_base_a_00316.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/hifigan/nicole_base_a_00316.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/mbmelgan/nicole_base_a_00316.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/dsp/nicole_base_a_00316.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/dspgan/nicole_base_a_00316.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/ddspgan/nicole_base_a_00316.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+</tr>
+<tr>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/gt/nicole_base_a_00326.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/wavernn/nicole_base_a_00326.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/hifigan/nicole_base_a_00326.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/mbmelgan/nicole_base_a_00326.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/dsp/nicole_base_a_00326.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/dspgan/nicole_base_a_00326.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/ddspgan/nicole_base_a_00326.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+</tr>
+<tr>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/gt/nicole_base_a_00355.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/wavernn/nicole_base_a_00355.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/hifigan/nicole_base_a_00355.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/mbmelgan/nicole_base_a_00355.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/dsp/nicole_base_a_00355.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/dspgan/nicole_base_a_00355.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/ddspgan/nicole_base_a_00355.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+</tr>
+<tr>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/gt/nicole_base_a_00433.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/wavernn/nicole_base_a_00433.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/hifigan/nicole_base_a_00433.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/mbmelgan/nicole_base_a_00433.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/dsp/nicole_base_a_00433.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/dspgan/nicole_base_a_00433.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./nicole/audio/ddspgan/nicole_base_a_00433.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+</tr>
+
+            </table>
+        </div>
+        
+
+    <div>
+    <h2> Male Speaker </h2>
+      <table border = "1" class="inlineTable">
+    
+
+        <col width="300">
+        <col width="300">
+        <col width="300">
+        <col width="300">
+        <col width="300">
+        <col width="300">
+        <col width="300">
+     <tr> 
+
+        <th>GroundTruth</th>
+        <th>WaveRNN</th>
+        <th>HifiGAN</th>
+        <th>MB-MelGAN</th>
+        <th>DSP Vocoder</th>
+        <th>DSP Vocoder Adv</th>
+        <th>DDSP Vocoder</th>
+</tr>
+<tr>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/gt/donny_base_c_00045.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/wavernn/donny_base_c_00045.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/hifigan/donny_base_c_00045.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/mbmelgan/donny_base_c_00045.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/dsp/donny_base_c_00045.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/dspgan/donny_base_c_00045.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/ddspgan/donny_base_c_00045.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+</tr>
+<tr>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/gt/donny_base_c_00167.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/wavernn/donny_base_c_00167.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/hifigan/donny_base_c_00167.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/mbmelgan/donny_base_c_00167.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/dsp/donny_base_c_00167.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/dspgan/donny_base_c_00167.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/ddspgan/donny_base_c_00167.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+</tr>
+<tr>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/gt/donny_base_c_00204.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/wavernn/donny_base_c_00204.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/hifigan/donny_base_c_00204.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/mbmelgan/donny_base_c_00204.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/dsp/donny_base_c_00204.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/dspgan/donny_base_c_00204.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/ddspgan/donny_base_c_00204.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+</tr>
+<tr>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/gt/donny_base_c_00354.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/wavernn/donny_base_c_00354.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/hifigan/donny_base_c_00354.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/mbmelgan/donny_base_c_00354.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/dsp/donny_base_c_00354.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/dspgan/donny_base_c_00354.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/ddspgan/donny_base_c_00354.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+</tr>
+<tr>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/gt/donny_base_c_00366.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/wavernn/donny_base_c_00366.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/hifigan/donny_base_c_00366.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/mbmelgan/donny_base_c_00366.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/dsp/donny_base_c_00366.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/dspgan/donny_base_c_00366.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/ddspgan/donny_base_c_00366.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+</tr>
+<tr>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/gt/donny_base_c_00594.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/wavernn/donny_base_c_00594.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/hifigan/donny_base_c_00594.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/mbmelgan/donny_base_c_00594.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/dsp/donny_base_c_00594.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/dspgan/donny_base_c_00594.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/ddspgan/donny_base_c_00594.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+</tr>
+<tr>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/gt/donny_base_c_00643.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/wavernn/donny_base_c_00643.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/hifigan/donny_base_c_00643.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/mbmelgan/donny_base_c_00643.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/dsp/donny_base_c_00643.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/dspgan/donny_base_c_00643.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/ddspgan/donny_base_c_00643.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+</tr>
+<tr>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/gt/donny_base_c_00981.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/wavernn/donny_base_c_00981.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/hifigan/donny_base_c_00981.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/mbmelgan/donny_base_c_00981.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/dsp/donny_base_c_00981.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/dspgan/donny_base_c_00981.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+
+    <td>
+        <audio controls style="width: 200px;">
+        <source src=./donny/audio/ddspgan/donny_base_c_00981.wav type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </td>
+</tr>
+
+            </table>
+        </div>
+        
+
+   </body>
+</html>
+
